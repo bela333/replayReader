@@ -17,10 +17,10 @@ type Replay struct {
 	error      error
 }
 
-//Set p to the next element in the Replay file.
+//Sets p to the next element in the Replay file.
 //If reading the packet was successful, it returns true.
-//If it wasn't successful, run p.Error(), to get the error Next() returned.
-//If Next() got to EOF, it return false and p.Error() returns nil.
+//If it wasn't successful, you should run r.Error(), to get the error Next() returned.
+//If Next() got to EOF, it returns false and r.Error() returns nil.
 func (r *Replay) Next(p *Packet) (success bool) {
 	var time uint32
 	err := binary.Read(r.replayFile, binary.BigEndian, &time)
